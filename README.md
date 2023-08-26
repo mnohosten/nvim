@@ -1,6 +1,6 @@
 # Personal neovim basic configuration
 
-Heavily inspired with by [ThePrimeagen](https://www.youtube.com/watch?v=w7i4amO_zaE) into to video.
+Heavily inspired by [ThePrimeagen](https://www.youtube.com/watch?v=w7i4amO_zaE) video. It was my starting point of serious dive into Vim.
 
 ## Predisposition
 
