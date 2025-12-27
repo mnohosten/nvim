@@ -17,7 +17,10 @@ return {
                     "python", "go", "html", "css", "json", "yaml", "dockerfile", "sql", "bash", "markdown"
                 },
                 callback = function()
-                    vim.treesitter.start()
+                    local ok, _ = pcall(vim.treesitter.start)
+                    if not ok then
+                        -- Parser not available, silently skip
+                    end
                 end,
             })
         end,

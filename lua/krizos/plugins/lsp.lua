@@ -60,7 +60,7 @@ return {
             require("mason-lspconfig").setup({
                 -- Note: lua_ls, rust_analyzer, gopls removed - not available on FreeBSD via Mason
                 -- Install manually: pkg install go123 rust-analyzer, lua_ls build from source
-                ensure_installed = { "ts_ls", "intelephense", "pyright" },
+                ensure_installed = { "ts_ls", "pyright", "phpactor" },
                 handlers = {
                     lsp_zero.default_setup,
 
@@ -68,18 +68,6 @@ return {
                     lua_ls = function()
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require("lspconfig").lua_ls.setup(lua_opts)
-                    end,
-
-                    -- PHP (Intelephense)
-                    intelephense = function()
-                        require("lspconfig").intelephense.setup({
-                            settings = {
-                                intelephense = {
-                                    files = { maxSize = 5000000 },
-                                    environment = { phpVersion = "8.2" },
-                                },
-                            },
-                        })
                     end,
 
                     -- Python (Pyright)

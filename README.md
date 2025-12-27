@@ -71,37 +71,32 @@ go install golang.org/x/tools/gopls@latest
     ├── init.lua             # Loads settings and remaps
     ├── lazy.lua             # Lazy.nvim configuration
     ├── set.lua              # Editor settings
-    ├── remap.lua            # Basic keymaps
+    ├── remap.lua            # Basic keymaps (window navigation)
     └── plugins/             # Plugin specifications
-        ├── bufferline.lua
-        ├── cloak.lua
-        ├── colorscheme.lua
-        ├── completion.lua
-        ├── conform.lua
-        ├── dap.lua
-        ├── fugitive.lua
-        ├── gitsigns.lua
-        ├── harpoon.lua
-        ├── indent-blankline.lua
-        ├── lint.lua
-        ├── lsp.lua
-        ├── lualine.lua
-        ├── navic.lua
-        ├── neotree.lua
-        ├── neotest.lua
-        ├── refactoring.lua
-        ├── telescope.lua
-        ├── toggleterm.lua
-        ├── treesitter.lua
-        ├── trouble.lua
-        ├── undotree.lua
-        ├── whichkey.lua
-        └── zenmode.lua
+        ├── colorscheme.lua  # Rose-pine theme
+        ├── dap.lua          # Debug adapter (PHP, Python, Go, JS)
+        ├── editor.lua       # Undotree, zen-mode, autopairs, which-key, toggleterm, copilot
+        ├── formatting.lua   # Conform (formatters) + nvim-lint
+        ├── git.lua          # Fugitive + gitsigns
+        ├── harpoon.lua      # Quick file navigation
+        ├── lsp.lua          # LSP + Mason + nvim-cmp
+        ├── telescope.lua    # Fuzzy finder
+        ├── testing.lua      # Neotest adapters
+        ├── treesitter.lua   # Syntax highlighting + context
+        └── ui.lua           # Lualine, bufferline, neo-tree, trouble, indent guides
 ```
 
 ## Key Mappings
 
 **Leader key**: `<Space>`
+
+### Window Navigation
+| Key | Action |
+|-----|--------|
+| `<A-h>` | Move to left window |
+| `<A-j>` | Move to lower window |
+| `<A-k>` | Move to upper window |
+| `<A-l>` | Move to right window |
 
 ### File Navigation
 | Key | Action |
@@ -110,6 +105,7 @@ go install golang.org/x/tools/gopls@latest
 | `<leader>pf` | Find files (Telescope) |
 | `<C-p>` | Git files (Telescope) |
 | `<leader>ps` | Grep search (Telescope) |
+| `<leader>vh` | Help tags (Telescope) |
 | `<A-1>` | Toggle Neo-tree |
 | `<leader>e` | Focus Neo-tree |
 
@@ -126,6 +122,7 @@ go install golang.org/x/tools/gopls@latest
 ### Buffer Management
 | Key | Action |
 |-----|--------|
+| `<leader>b` | Switch buffer (Telescope) |
 | `<A-Right>` | Next buffer |
 | `<A-Left>` | Previous buffer |
 | `<leader>bc` | Close buffer |
@@ -195,9 +192,14 @@ go install golang.org/x/tools/gopls@latest
 | Key | Action |
 |-----|--------|
 | `<leader>u` | Toggle undotree |
-| `<leader>zz` | Zen mode |
+| `<leader>zz` | Zen mode (with numbers) |
+| `<leader>zZ` | Zen mode (minimal) |
 | `<leader>xx` | Toggle trouble |
-| `<A-F12>` / `<leader>tt` | Toggle terminal |
+| `<leader>xw` | Document diagnostics |
+| `<C-\`>` / `<leader>tt` | Toggle terminal |
+| `<leader>tf` | Float terminal |
+| `<leader>th` | Horizontal terminal |
+| `<leader>tv` | Vertical terminal |
 
 ## Language Support
 
@@ -205,7 +207,7 @@ go install golang.org/x/tools/gopls@latest
 | Language | Server | Installation |
 |----------|--------|--------------|
 | TypeScript/JavaScript | ts_ls | Mason (auto) |
-| PHP | intelephense | Mason (auto) |
+| PHP | phpactor | Mason (auto) |
 | Python | pyright | Mason (auto) |
 | Rust | rust-analyzer | System (`pkg install rust-analyzer`) |
 | Lua | lua_ls | System (build from source) |
@@ -220,10 +222,11 @@ go install golang.org/x/tools/gopls@latest
 - **Rust**: rustfmt
 
 ### Linters (via nvim-lint)
-- **PHP**: phpcs
 - **JavaScript/TypeScript**: eslint_d
 - **Python**: pylint
 - **Go**: golangcilint
+
+> Note: PHP linting is handled by phpactor diagnostics.
 
 ## Plugins Overview
 

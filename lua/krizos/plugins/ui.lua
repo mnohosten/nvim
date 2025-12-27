@@ -124,9 +124,7 @@ return {
     {
         "folke/trouble.nvim",
         cmd = { "TroubleToggle", "Trouble" },
-        opts = {
-            icons = true,
-        },
+        opts = {},
         keys = {
             { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
             { "<leader>xw", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Document diagnostics" },

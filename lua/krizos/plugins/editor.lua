@@ -132,7 +132,7 @@ return {
         "akinsho/toggleterm.nvim",
         version = "*",
         keys = {
-            { "<A-F12>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+            { "<C-`>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal", mode = { "n", "t" } },
             { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
             { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float terminal" },
             { "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "Horizontal terminal" },
@@ -146,7 +146,7 @@ return {
                     return vim.o.columns * 0.4
                 end
             end,
-            open_mapping = [[<A-F12>]],
+            open_mapping = [[<C-`>]],
             hide_numbers = true,
             shade_terminals = true,
             shading_factor = 2,
