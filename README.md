@@ -172,6 +172,7 @@ go install golang.org/x/tools/gopls@latest
 | `<leader>ts` | Run test suite |
 | `<leader>tl` | Run last test |
 | `<leader>to` / `<M-]>` | Show test output |
+| `<leader>tO` | Toggle output panel |
 | `<leader>tS` | Toggle summary |
 | `<leader>td` | Debug nearest test |
 
