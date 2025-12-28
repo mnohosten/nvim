@@ -75,11 +75,11 @@ go install golang.org/x/tools/gopls@latest
     └── plugins/             # Plugin specifications
         ├── colorscheme.lua  # Rose-pine theme
         ├── dap.lua          # Debug adapter (PHP, Python, Go, JS)
-        ├── editor.lua       # Undotree, zen-mode, autopairs, which-key, toggleterm, copilot
+        ├── editor.lua       # Undotree, zen-mode, autopairs, which-key, toggleterm
         ├── formatting.lua   # Conform (formatters) + nvim-lint
         ├── git.lua          # Fugitive + gitsigns
         ├── harpoon.lua      # Quick file navigation
-        ├── lsp.lua          # LSP + Mason + nvim-cmp
+        ├── lsp.lua          # LSP + Mason + nvim-cmp + Copilot
         ├── telescope.lua    # Fuzzy finder
         ├── testing.lua      # Neotest adapters
         ├── treesitter.lua   # Syntax highlighting + context
@@ -143,6 +143,24 @@ go install golang.org/x/tools/gopls@latest
 | `<leader>ca` / `<A-CR>` | Code actions |
 | `<leader>rn` / `<F6>` | Rename symbol |
 | `<leader>f` | Format buffer |
+
+### Copilot (AI Completion)
+Copilot suggestions appear in the completion menu alongside LSP completions (marked with  icon and `[Copilot]` label).
+
+| Key | Action |
+|-----|--------|
+| `<C-n>` | Next completion item |
+| `<C-p>` | Previous completion item |
+| `<C-y>` | Accept completion |
+| `<C-Space>` | Trigger completion manually |
+
+**Commands:**
+| Command | Action |
+|---------|--------|
+| `:Copilot auth` | Authenticate with GitHub |
+| `:Copilot status` | Check Copilot connection status |
+| `:Copilot enable` | Enable Copilot |
+| `:Copilot disable` | Disable Copilot |
 
 ### Git
 | Key | Action |
@@ -261,7 +279,7 @@ go install golang.org/x/tools/gopls@latest
 - **undotree** - Undo history
 - **zen-mode.nvim** - Distraction-free mode
 - **cloak.nvim** - Hide secrets in .env
-- **copilot.vim** - AI pair programming
+- **copilot.lua** + **copilot-cmp** - AI completions integrated with nvim-cmp
 - **toggleterm.nvim** - Terminal integration
 
 ## Customization
