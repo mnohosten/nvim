@@ -303,6 +303,38 @@ Create a new file in `lua/krizos/plugins/` with the plugin specification. Lazy.n
 :checkhealth
 ```
 
+### macOS: Alt/Option Key Bindings Not Working
+
+On macOS, the Option key doesn't send Alt key codes by default. Keybindings like `<A-1>` (Neo-tree toggle), `<A-h/j/k/l>` (window navigation), or `<A-Left/Right>` (buffer switching) won't work until you configure your terminal.
+
+**iTerm2:**
+1. Open Preferences → Profiles → Keys → General
+2. Set "Left Option key" to **Esc+**
+3. (Optional) Set "Right Option key" to **Esc+** as well
+
+**Terminal.app:**
+1. Open Preferences → Profiles → Keyboard
+2. Check **"Use Option as Meta key"**
+
+**Alacritty:**
+Add to your `~/.config/alacritty/alacritty.toml`:
+```toml
+[keyboard]
+bindings = [
+  { key = "1", mods = "Alt", chars = "\u001b1" },
+  { key = "H", mods = "Alt", chars = "\u001bh" },
+  { key = "J", mods = "Alt", chars = "\u001bj" },
+  { key = "K", mods = "Alt", chars = "\u001bk" },
+  { key = "L", mods = "Alt", chars = "\u001bl" },
+]
+```
+
+**Kitty:**
+Add to your `~/.config/kitty/kitty.conf`:
+```
+macos_option_as_alt yes
+```
+
 ## License
 
 MIT
