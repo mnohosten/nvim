@@ -70,12 +70,6 @@ return {
         },
     },
 
-    -- Copilot (existing)
-    {
-        "github/copilot.vim",
-        event = "InsertEnter",
-    },
-
     -- Auto pairs (new)
     {
         "windwp/nvim-autopairs",
