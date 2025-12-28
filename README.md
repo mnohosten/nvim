@@ -145,14 +145,16 @@ go install golang.org/x/tools/gopls@latest
 | `<leader>f` | Format buffer |
 
 ### Copilot (AI Completion)
-Copilot suggestions appear in the completion menu alongside LSP completions (marked with  icon and `[Copilot]` label).
+Copilot shows inline ghost text suggestions as you type (VS Code/JetBrains style).
 
 | Key | Action |
 |-----|--------|
-| `<C-n>` | Next completion item |
-| `<C-p>` | Previous completion item |
-| `<C-y>` | Accept completion |
-| `<C-Space>` | Trigger completion manually |
+| `<Tab>` | Accept suggestion |
+| `<M-w>` | Accept word |
+| `<M-l>` | Accept line |
+| `<M-]>` | Next suggestion |
+| `<M-[>` | Previous suggestion |
+| `<C-]>` | Dismiss suggestion |
 
 **Commands:**
 | Command | Action |

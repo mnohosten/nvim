@@ -157,7 +157,7 @@ return {
         end,
     },
 
-    -- Copilot (AI completion engine)
+    -- Copilot (AI completion with inline ghost text)
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -165,7 +165,19 @@ return {
         config = function()
             require("copilot").setup({
                 panel = { enabled = false },
-                suggestion = { enabled = false },
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    debounce = 75,
+                    keymap = {
+                        accept = "<Tab>",
+                        accept_word = "<M-w>",
+                        accept_line = "<M-l>",
+                        next = "<M-]>",
+                        prev = "<M-[>",
+                        dismiss = "<C-]>",
+                    },
+                },
                 filetypes = {
                     yaml = true,
                     markdown = true,
@@ -175,15 +187,6 @@ return {
                     ["."] = false,
                 },
             })
-        end,
-    },
-
-    -- Copilot cmp source
-    {
-        "zbirenbaum/copilot-cmp",
-        dependencies = { "zbirenbaum/copilot.lua" },
-        config = function()
-            require("copilot_cmp").setup()
         end,
     },
 
@@ -199,7 +202,6 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "L3MON4D3/LuaSnip",
             "rafamadriz/friendly-snippets",
-            "zbirenbaum/copilot-cmp",
         },
         config = function()
             local cmp = require("cmp")
@@ -245,12 +247,11 @@ return {
                     end,
                 },
                 sources = {
-                    { name = "copilot", group_index = 1 },
-                    { name = "nvim_lsp", group_index = 1 },
-                    { name = "nvim_lua", group_index = 1 },
-                    { name = "path", group_index = 1 },
-                    { name = "luasnip", keyword_length = 2, group_index = 2 },
-                    { name = "buffer", keyword_length = 3, group_index = 2 },
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
+                    { name = "path" },
+                    { name = "luasnip", keyword_length = 2 },
+                    { name = "buffer", keyword_length = 3 },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -262,7 +263,6 @@ return {
                     format = function(entry, vim_item)
                         vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind] or "", vim_item.kind)
                         vim_item.menu = ({
-                            copilot = "[Copilot]",
                             nvim_lsp = "[LSP]",
                             nvim_lua = "[Lua]",
                             luasnip = "[Snip]",
@@ -271,21 +271,6 @@ return {
                         })[entry.source.name]
                         return vim_item
                     end,
-                },
-                sorting = {
-                    priority_weight = 2,
-                    comparators = {
-                        require("copilot_cmp.comparators").prioritize,
-                        cmp.config.compare.offset,
-                        cmp.config.compare.exact,
-                        cmp.config.compare.score,
-                        cmp.config.compare.recently_used,
-                        cmp.config.compare.locality,
-                        cmp.config.compare.kind,
-                        cmp.config.compare.sort_text,
-                        cmp.config.compare.length,
-                        cmp.config.compare.order,
-                    },
                 },
                 window = {
                     completion = cmp.config.window.bordered(),
